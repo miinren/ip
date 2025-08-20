@@ -14,10 +14,21 @@ public class TaskList {
         return null;
     }
 
-    public String addTask(String description) {
-        Task task = new Task(description);
+    public String addTask(String input) {
+        Task task;
+        if (input.startsWith("todo ")) {
+            task = new Todo(input.substring(5));
+        } else if (input.startsWith("deadline ")) {
+            String[] parts = input.substring(9).split(" /by", 2);
+            task = new Deadline(parts[0], parts[1]);
+        } else if (input.startsWith("event ")) {
+            String[] parts = input.substring(6  ).split(" /from | /to");
+            task = new Event(parts[0], parts[1], parts[2]);
+        } else {
+            task = new Task(input);
+        }
         tasks.add(task);
-        return "   Added: " + description;
+        return "   Added: " + task.toString() + "\n" + "      Now you have " + tasks.size() + " in the list!";
     }
 
     public String listTasks() {
