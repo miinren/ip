@@ -18,16 +18,26 @@ public class Juin {
 
         Scanner sc = new Scanner(System.in);
         String echo = "";
+        TaskList tasklist = new TaskList();
+
         while (true) {
             echo = sc.nextLine();
             if (echo.equals("bye")) {
                 break;
             }
-            System.out.println(
-                    "   ____________________________________________________________\n   "
-                            + echo + "\n"
-                            + "   ____________________________________________________________"
-            );
+
+            if (echo.equals("list")) {
+                System.out.println("   ____________________________________________________________");
+                System.out.println(tasklist.listTasks());
+                System.out.printf("   ____________________________________________________________\n");
+            } else {
+                tasklist.addTask(echo);
+                System.out.println(
+                        "   ____________________________________________________________\n"
+                                + "   added: " + echo + "\n"
+                                + "   ____________________________________________________________"
+                );
+            }
         }
 
         System.out.println(
