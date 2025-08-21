@@ -1,10 +1,12 @@
 public class Task {
-    private String description;
-    private Boolean done;
+    protected String description;
+    protected Boolean done;
+    protected TaskType type;
 
-    public Task(String description) {
+    public Task(String description, TaskType type) {
         this.description = description;
         this.done = false;
+        this.type = type;
     }
 
     public void markDone() {

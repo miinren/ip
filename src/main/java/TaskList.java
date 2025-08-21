@@ -16,35 +16,47 @@ public class TaskList {
 
     public String addTask(String input) throws JuinException {
         Task task;
-        if (input.startsWith("todo ")) {
-            String description = input.substring(5);
-            if (description.isEmpty()) {
-                throw new JuinException("   The description of todo cannot be empty!");
-            }
-            task = new Todo(description);
-        } else if (input.startsWith("deadline ")) {
-            String description = input.substring(9).trim();
-            if (!description.contains("/by")) {
-                throw new JuinException("   There is no deadline!");
-            }
-            String[] parts = input.substring(9).split("/by", 2);
-            if (parts[0].isBlank() || parts[1].isBlank()) {
-                throw new JuinException("   The description or time of deadline cannot be empty!");
-            }
-            task = new Deadline(parts[0], parts[1]);
-        } else if (input.startsWith("event ")) {
-            if (!input.contains(" /from") || !input.contains(" /to")) {
-                throw new JuinException("   Make sure theres a from and to!");
-            }
-            String[] parts = input.substring(6  ).split(" /from | /to");
-            if (parts.length < 3 || parts[0].isBlank() || parts[1].isBlank() || parts[2].isBlank()) {
-                throw new JuinException("   The description, from and to cannot be empty!");
-            }
+        if (input.isBlank()) {
+            throw new JuinException("   Input cannot be empty!");
+        }
 
-            task = new Event(parts[0], parts[1], parts[2]);
+        String[] words = input.split(" ", 2);
+        String type = words[0].toLowerCase();
+        String description;
+        if (words.length > 1) {
+            description = words[1].trim();
         } else {
             throw new JuinException("   Sorry I don't understand.");
         }
+
+        switch(type) {
+            case "todo":
+                if (description.isEmpty()) {
+                    throw new JuinException("   The description of todo cannot be empty!");
+                }
+                task = new Todo(description);
+                break;
+
+            case "deadline":
+                String[] deadlineParts = description.split(" /by", 2);
+                if (deadlineParts[0].isBlank() || deadlineParts[1].isBlank()) {
+                    throw new JuinException("   The description or time of deadline cannot be empty!");
+                }
+                task = new Deadline(deadlineParts[0].trim(), deadlineParts[1].trim());
+                break;
+
+            case "event":
+                String[] eventParts = description.split(" /from | /to");
+                if (!input.contains(" /from") || !input.contains(" /to")) {
+                    throw new JuinException("   Make sure theres a from and to!");
+                }
+                task = new Event(eventParts[0].trim(), eventParts[1].trim(), eventParts[2].trim());
+                break;
+
+            default:
+                throw new JuinException("   Sorry I don't understand.");
+        }
+
         tasks.add(task);
         return "   Added: " + task.toString() + "\n" + "      Now you have " + tasks.size() + " in the list!";
     }
