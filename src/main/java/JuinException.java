@@ -1,4 +1,5 @@
-package PACKAGE_NAME;
-
-public class JuinException {
+public class JuinException extends Exception {
+    public JuinException(String e) {
+        super(e);
+    }
 }

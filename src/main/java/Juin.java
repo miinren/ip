@@ -3,13 +3,6 @@ import java.util.Scanner;
 
 public class Juin {
     public static void main(String[] args) {
-        String logo =
-            "░░░░░██╗██╗░░░██╗██╗███╗░░██╗\n"
-        + "   ░░░░░██║██║░░░██║██║████╗░██║\n"
-        + "   ░░░░░██║██║░░░██║██║██╔██╗██║\n"
-        + "   ██╗░░██║██║░░░██║██║██║╚████║\n"
-        + "   ╚█████╔╝╚██████╔╝██║██║░╚███║\n"
-        + "   ░╚════╝░░╚═════╝░╚═╝╚═╝░░╚══╝\n";
         System.out.println(
                 "   ____________________________________________________________\n"
                 + "   Hello! I'm JUIN\n"
@@ -35,23 +28,51 @@ public class Juin {
             else if (echo.startsWith("mark")) {
                 String[] parts = echo.split(" ", 2);
                 int number = Integer.parseInt(parts[1]);
-                System.out.println("   ____________________________________________________________");
-                System.out.println(tasklist.markTaskDone(number));
-                System.out.println("   ____________________________________________________________");
+                try {
+                    System.out.println("   ____________________________________________________________");
+                    System.out.println(tasklist.markTaskDone(number));
+                    System.out.println("   ____________________________________________________________");
+                } catch (JuinException e) {
+                    System.out.println(e.getMessage());
+                    System.out.println("   ____________________________________________________________");
+                }
             }
 
             else if (echo.startsWith("unmark")) {
                 String[] parts = echo.split(" ", 2);
                 int number = Integer.parseInt(parts[1]);
-                System.out.println("   ____________________________________________________________");
-                System.out.println(tasklist.unmarkTaskDone(number));
-                System.out.println("   ____________________________________________________________");
+                try {
+                    System.out.println("   ____________________________________________________________");
+                    System.out.println(tasklist.unmarkTaskDone(number));
+                    System.out.println("   ____________________________________________________________");
+                } catch (JuinException e) {
+                    System.out.println(e.getMessage());
+                    System.out.println("   ____________________________________________________________");
+                }
+            }
+
+            else if (echo.startsWith("delete")) {
+                String[] parts = echo.split(" ",2 );
+                int number = Integer.parseInt(parts[1]);
+                try {
+                    System.out.println("   ____________________________________________________________");
+                    System.out.println(tasklist.deleteTask(number));
+                    System.out.println("   ____________________________________________________________");
+                } catch (JuinException e) {
+                    System.out.println(e.getMessage());
+                    System.out.println("   ____________________________________________________________");
+                }
             }
 
             else {
-                System.out.println("   ____________________________________________________________");
-                System.out.println(tasklist.addTask(echo));
-                System.out.println("   ____________________________________________________________\n");
+                try {
+                    System.out.println("   ____________________________________________________________");
+                    System.out.println(tasklist.addTask(echo));
+                    System.out.println("   ____________________________________________________________\n");
+                } catch (JuinException e) {
+                    System.out.println(e.getMessage());
+                    System.out.println("   ____________________________________________________________\n");
+                }
             }
         }
 
@@ -59,7 +80,6 @@ public class Juin {
                 "   ____________________________________________________________\n"
                 + "   Bye. Hope to see you again soon!\n"
                 + "   ____________________________________________________________\n   "
-                + logo
             );
         sc.close();
     }
