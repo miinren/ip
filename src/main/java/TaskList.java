@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class TaskList {
     private ArrayList <Task> tasks;
@@ -7,11 +8,8 @@ public class TaskList {
         this.tasks = new ArrayList<>();
     }
 
-    public Task getTask(int number) {
-        if (number > 0 && number <= tasks.size()) {
-            return tasks.get(number - 1);
-        }
-        return null;
+    public List<Task> getTasks() {
+        return this.tasks;
     }
 
     public String addTask(String input) throws JuinException {
