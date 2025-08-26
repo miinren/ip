@@ -31,7 +31,6 @@ public class Storage {
 
     public List<Task> read() {
         File file = new File(path);
-
         if (!file.exists()) {
             return new ArrayList<>();
         }
