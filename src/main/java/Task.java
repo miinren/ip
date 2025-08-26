@@ -1,20 +1,20 @@
 public class Task {
     protected String description;
-    protected Boolean done;
+    protected Boolean isDone;
     protected TaskType type;
 
     public Task(String description, TaskType type) {
         this.description = description;
-        this.done = false;
+        this.isDone = false;
         this.type = type;
     }
 
     public void markDone() {
-        this.done = true;
+        this.isDone = true;
     }
 
     public void unmarkDone() {
-        this.done = false;
+        this.isDone = false;
     }
 
     public String getDescription() {
@@ -22,11 +22,16 @@ public class Task {
     }
 
     public Boolean getDone() {
-        return this.done;
+        return this.isDone;
     }
 
     @Override
     public String toString() {
-        return (done ? "[X] " : "[ ] ") + description;
+        return (isDone ? "[X] " : "[ ] ") + description;
     }
+
+    public String makePretty() {
+        return "T | " + (isDone ? "1" : "0") + " | " + description;
+    }
+
 }

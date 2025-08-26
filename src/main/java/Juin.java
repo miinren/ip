@@ -1,8 +1,33 @@
 import java.sql.SQLOutput;
 import java.util.Scanner;
+import java.io.File;
+import java.util.List;
 
 public class Juin {
+    private TaskList taskList;
+    private Storage storage;
+
+    private static final String DATA_FOLDER = "data";
+    private static final String DATA_FILE = "juin.txt";
+
+    public Juin() {
+        File folder = new File(DATA_FOLDER);
+        if (!folder.exists()) {
+            folder.mkdir();
+        }
+
+        File file = new File(folder, DATA_FILE);
+        this.storage = new Storage(file.getPath());
+        System.out.println("saved at" + file.getAbsolutePath());
+
+        List<Task> loadedTasks = storage.read();
+        this.taskList = new TaskList();
+        this.taskList.getTasks().addAll(loadedTasks);
+    }
+
     public static void main(String[] args) {
+        Juin juin = new Juin();
+
         System.out.println(
                 "   ____________________________________________________________\n"
                 + "   Hello! I'm JUIN\n"
@@ -11,7 +36,6 @@ public class Juin {
 
         Scanner sc = new Scanner(System.in);
         String echo = "";
-        TaskList tasklist = new TaskList();
 
         while (true) {
             echo = sc.nextLine();
@@ -21,7 +45,7 @@ public class Juin {
 
             else if (echo.equals("list")) {
                 System.out.println("   ____________________________________________________________");
-                System.out.println(tasklist.listTasks());
+                System.out.println(juin.taskList.listTasks());
                 System.out.println("   ____________________________________________________________\n");
             }
 
@@ -30,7 +54,7 @@ public class Juin {
                 int number = Integer.parseInt(parts[1]);
                 try {
                     System.out.println("   ____________________________________________________________");
-                    System.out.println(tasklist.markTaskDone(number));
+                    System.out.println(juin.taskList.markTaskDone(number));
                     System.out.println("   ____________________________________________________________");
                 } catch (JuinException e) {
                     System.out.println(e.getMessage());
@@ -43,7 +67,7 @@ public class Juin {
                 int number = Integer.parseInt(parts[1]);
                 try {
                     System.out.println("   ____________________________________________________________");
-                    System.out.println(tasklist.unmarkTaskDone(number));
+                    System.out.println(juin.taskList.unmarkTaskDone(number));
                     System.out.println("   ____________________________________________________________");
                 } catch (JuinException e) {
                     System.out.println(e.getMessage());
@@ -56,7 +80,7 @@ public class Juin {
                 int number = Integer.parseInt(parts[1]);
                 try {
                     System.out.println("   ____________________________________________________________");
-                    System.out.println(tasklist.deleteTask(number));
+                    System.out.println(juin.taskList.deleteTask(number));
                     System.out.println("   ____________________________________________________________");
                 } catch (JuinException e) {
                     System.out.println(e.getMessage());
@@ -67,7 +91,7 @@ public class Juin {
             else {
                 try {
                     System.out.println("   ____________________________________________________________");
-                    System.out.println(tasklist.addTask(echo));
+                    System.out.println(juin.taskList.addTask(echo));
                     System.out.println("   ____________________________________________________________\n");
                 } catch (JuinException e) {
                     System.out.println(e.getMessage());
@@ -76,6 +100,7 @@ public class Juin {
             }
         }
 
+        juin.storage.write(juin.taskList);
         System.out.println(
                 "   ____________________________________________________________\n"
                 + "   Bye. Hope to see you again soon!\n"

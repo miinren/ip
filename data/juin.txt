@@ -1,0 +1,3 @@
+T | 0 | poop
+E | 0 | poop in toilet | 3pm | 2pm
+D | 1 | pooping | 4
