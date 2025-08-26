@@ -40,7 +40,11 @@ public class TaskList {
                 if (deadlineParts[0].isBlank() || deadlineParts[1].isBlank()) {
                     throw new JuinException("   The description or time of deadline cannot be empty!");
                 }
-                task = new Deadline(deadlineParts[0].trim(), deadlineParts[1].trim());
+                try {
+                    task = new Deadline(deadlineParts[0].trim(), deadlineParts[1].trim());
+                } catch (IllegalArgumentException e) {
+                    throw new JuinException("   Invalid date/time format. Use yyyy-MM-dd or yyyy-MM-dd HHmm");
+                }
                 break;
 
             case "event":
@@ -48,7 +52,11 @@ public class TaskList {
                 if (!input.contains(" /from") || !input.contains(" /to")) {
                     throw new JuinException("   Make sure theres a from and to!");
                 }
-                task = new Event(eventParts[0].trim(), eventParts[1].trim(), eventParts[2].trim());
+                try {
+                    task = new Event(eventParts[0].trim(), eventParts[1].trim(), eventParts[2].trim());
+                } catch (IllegalArgumentException e) {
+                    throw new JuinException("   Invalid date/time format. Use yyyy-MM-dd or yyyy-MM-dd HHmm");
+                }
                 break;
 
             default:
