@@ -1,3 +1,7 @@
+package PeanutButter.Tasks;
+
+import PeanutButter.TaskType;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
