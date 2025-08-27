@@ -1,3 +1,7 @@
+package PeanutButter.Tasks;
+
+import PeanutButter.TaskType;
+
 public class Task {
     protected String description;
     protected Boolean isDone;
