@@ -27,7 +27,6 @@ public class Storage {
             for (Task task : taskList.getTasks()) {
                 fw.write(task.makePretty() + "\n");
             }
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
