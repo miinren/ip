@@ -10,13 +10,28 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Storage class that handles reading and writing
+ * Allows the task list to be saved and maintained
+ */
+
 public class Storage {
     private String path;
 
+    /**
+     * Creates a Storage object with a file path
+     *
+     * @param path The path that the Storage is created with
+     */
     public Storage(String path) {
         this.path = path;
     }
 
+    /**
+     * Writes the contents of the task list to the storage
+     *
+     * @param taskList The task list that is being saved in the storage
+     */
     public void write(TaskList taskList) {
         File folder = new File("data");
         if (!folder.exists()) {
@@ -32,6 +47,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Reads the saved contents of the task list from the storage
+     *
+     * @return The task list that is saved in the storage
+     */
     public List<Task> read() {
         File file = new File(path);
         if (!file.exists()) {
@@ -55,6 +75,13 @@ public class Storage {
         return tasks;
     }
 
+    /**
+     * Helper method to translates the contents of the task list that is saved in storage
+     *
+     * @param line The line that is being translated back from a string to a task
+     *
+     * @return The task that was just translated
+     */
     public Task parseFile(String line) {
         String[] parts = line.split("\\s*\\|\\s*");
         String taskType = parts[0];
