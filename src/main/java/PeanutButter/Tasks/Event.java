@@ -50,8 +50,8 @@ public class Event extends Task {
 
     @Override
     public String makePretty() {
-        String fromStr = fromDT == null ? fromD.format(outputD) : fromDT.format(outputDT);
-        String toStr = toDT == null ? toD.format(outputD) : toDT.format(outputDT);
+        String fromStr = fromDT == null ? fromD.format(inputD) : fromDT.format(inputDT);
+        String toStr = toDT == null ? toD.format(inputD) : toDT.format(inputDT);
 
         return "E | " + (isDone ? "1" : "0") + " | " + description + " | " + fromStr + " | " + toStr;
     }
