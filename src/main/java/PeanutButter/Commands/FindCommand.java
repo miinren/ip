@@ -17,7 +17,7 @@ public class FindCommand extends Command {
     @Override
     public boolean run(TaskList taskList, Ui ui) throws JuinException {
         if (args == null || args.isBlank()) {
-            throw new JuinException("Search keyword cannot be empty.");
+            throw new JuinException("   Search keyword cannot be empty.");
         }
 
         TaskList keyList = new TaskList(new ArrayList<>());
