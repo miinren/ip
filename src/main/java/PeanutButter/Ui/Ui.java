@@ -58,17 +58,30 @@ public class Ui {
         System.out.println("   ____________________________________________________________");
     }
 
-    public void showListMessage(TaskList tasks) {
+    public void showListMessage(TaskList taskList) {
         System.out.println("   ____________________________________________________________");
-        if (tasks.size() < 1) {
+        if (taskList.size() < 1) {
             System.out.println("   No tasks found.");
         } else {
             System.out.println("   Here are the tasks in your list:");
-                for (int i = 0; i < tasks.size(); i++) {
-                    System.out.println("   " + (i + 1) + ". " + tasks.getTasks().get(i));
+                for (int i = 0; i < taskList.size(); i++) {
+                    System.out.println("   " + (i + 1) + ". " + taskList.getTasks().get(i));
             }
         }
 
+        System.out.println("   ____________________________________________________________");
+    }
+
+    public void showKeyListMessage(TaskList taskList, String key) {
+        System.out.println("   ____________________________________________________________");
+        if (taskList.size() < 1) {
+            System.out.println("   No tasks found.");
+        } else {
+            System.out.println("   Here are the tasks in your list containing " + "\"" + key + "\":");
+            for (int i = 0; i < taskList.size(); i++) {
+                System.out.println("   " + (i + 1) + ". " + taskList.getTasks().get(i));
+            }
+        }
         System.out.println("   ____________________________________________________________");
     }
 
