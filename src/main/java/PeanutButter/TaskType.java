@@ -8,5 +8,6 @@ public enum TaskType {
     MARK,
     UNMARK,
     DELETE,
-    BYE
+    BYE,
+    FIND
 }

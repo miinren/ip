@@ -23,6 +23,7 @@ public class Parser {
         case "todo": return new TodoCommand(args);
         case "deadline": return new DeadlineCommand(args);
         case "event": return new EventCommand(args);
+        case "find": return new FindCommand(args);
         default: throw new JuinException("   Sorry, I don't understand that command.");
         }
     }
