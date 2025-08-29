@@ -25,7 +25,6 @@ public class DeleteCommand extends Command {
         } catch (NumberFormatException e) {
             throw new JuinException("   Invalid task number!");
         }
-
         return false;
     }
 }
