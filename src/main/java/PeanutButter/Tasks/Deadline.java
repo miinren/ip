@@ -39,7 +39,7 @@ public class Deadline extends Task {
 
     @Override
     public String makePretty() {
-        String byStr = byDT == null ? byD.format(outputD) : byDT.format(outputDT);
+        String byStr = byDT == null ? byD.format(inputD) : byDT.format(inputDT);
         return "D | " + (isDone ? "1" : "0") + " | " + description + " | " + byStr;
     }
 }

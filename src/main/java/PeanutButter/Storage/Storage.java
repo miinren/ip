@@ -95,10 +95,13 @@ public class Storage {
             break;
 
         case "D":
+            parts[3] = parts[3].trim().replace(":", "");
             task = new Deadline(description, parts[3]);
             break;
 
         case "E":
+            parts[3] = parts[3].trim().replace(":", "");
+            parts[4] = parts[4].trim().replace(":", "");
             task = new Event(description, parts[3], parts[4]);
             break;
 
