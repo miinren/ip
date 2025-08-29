@@ -1,6 +1,7 @@
 package PeanutButter.Commands;
 
 import PeanutButter.Exceptions.JuinException;
+import PeanutButter.Juin;
 import PeanutButter.Tasks.Event;
 import PeanutButter.Tasks.Task;
 import PeanutButter.Tasks.TaskList;
@@ -28,10 +29,13 @@ public class EventCommand extends Command {
         if (parts.length < 3) {
             throw new JuinException("   Invalid event format!");
         }
-
-        Task event = new Event(parts[0].trim(), parts[1].trim(), parts[2].trim());
-        taskList.addTask(event);
-        ui.addTaskMessage(taskList, event);
+        try {
+            Task event = new Event(parts[0].trim(), parts[1].trim(), parts[2].trim());
+            taskList.addTask(event);
+            ui.addTaskMessage(taskList, event);
+        } catch (IllegalArgumentException e) {
+            throw new JuinException("Invalid date/time format. Use yyyy-MM-dd or yyyy-MM-dd HHmm");
+        }
 
         return false;
     }

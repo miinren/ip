@@ -24,7 +24,7 @@ public class Parser {
         case "deadline": return new DeadlineCommand(args);
         case "event": return new EventCommand(args);
         case "find": return new FindCommand(args);
-        default: throw new JuinException("   Sorry, I don't understand that command.");
+        default: throw new JuinException("Sorry, I don't understand that command.");
         }
     }
 }
