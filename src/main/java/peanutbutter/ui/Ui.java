@@ -1,31 +1,28 @@
 package peanutbutter.ui;
 
 import java.util.Scanner;
-
 import peanutbutter.tasks.Task;
 import peanutbutter.tasks.TaskList;
 
 public class Ui {
     private Scanner sc;
+    private String lastMessage;
 
     public Ui() {
         sc = new Scanner(System.in);
+        lastMessage = "";
     }
 
     public void welcomeMessage() {
-        System.out.println(
-                "   ____________________________________________________________\n"
-                + "   Hello! I'm JUIN\n"
-                + "   What can I do for you?\n"
-                + "   ____________________________________________________________");
+        String msg = "Hello! I'm JUIN. What can I do for you?";
+        setLastMessage(msg);
+        System.out.println(msg);
     }
 
     public void byeMessage() {
-        System.out.println(
-                "   ____________________________________________________________\n"
-                + "   Bye. Hope to see you again soon!\n"
-                + "   ____________________________________________________________\n"
-        );
+        String msg = "Bye. Hope to see you again soon!";
+        setLastMessage(msg);
+        System.out.println(msg);
     }
 
     public String readCommand() {
@@ -33,64 +30,71 @@ public class Ui {
     }
 
     public void addTaskMessage(TaskList taskList, Task task) {
-        System.out.println("   ____________________________________________________________");
-        System.out.println("   Added: " + task.toString());
-        System.out.println("   Now you have " + taskList.size() + " tasks in the list!");
-        System.out.println("   ____________________________________________________________\n");
+        String msg = "Added: " + task.toString() + "\n"
+                + "Now you have " + taskList.size() + " tasks in the list!";
+        setLastMessage(msg);
+        System.out.println(msg);
     }
 
     public void deleteTaskMessage(TaskList taskList, Task task) {
-        System.out.println("   ____________________________________________________________");
-        System.out.println("   Noted. I have removed this task: \n" + "      " + task);
-        System.out.println("   Now you have " + taskList.size() + " tasks in the list!");
-        System.out.println("   ____________________________________________________________\n");
+        String msg = "Removed: " + task.toString() + "\n"
+                + "Now you have " + taskList.size() + " tasks in the list!";
+        setLastMessage(msg);
+        System.out.println(msg);
     }
 
     public void markTaskMessage(Task task) {
-        System.out.println("   ____________________________________________________________");
-        System.out.println("   Nice! I've marked this task as done: \n" + "      " + task);
-        System.out.println("   ____________________________________________________________\n");
+        String msg = "Marked as done: " + task.toString();
+        setLastMessage(msg);
+        System.out.println(msg);
     }
 
     public void unmarkTaskMessage(Task task) {
-        System.out.println("   ____________________________________________________________");
-        System.out.println("   Shucks! I've marked this task as not done: \n" + "      " + task);
-        System.out.println("   ____________________________________________________________");
+        String msg = "Marked as not done: " + task.toString();
+        setLastMessage(msg);
+        System.out.println(msg);
     }
 
     public void showListMessage(TaskList taskList) {
-        System.out.println("   ____________________________________________________________");
+        StringBuilder sb = new StringBuilder();
         if (taskList.size() < 1) {
-            System.out.println("   No tasks found.");
+            sb.append("No tasks found.");
         } else {
-            System.out.println("   Here are the tasks in your list:");
+            sb.append("Tasks in your list:\n");
             for (int i = 0; i < taskList.size(); i++) {
-                System.out.println("   " + (i + 1) + ". " + taskList.getTasks().get(i));
+                sb.append(i + 1).append(". ").append(taskList.getTasks().get(i)).append("\n");
             }
         }
-
-        System.out.println("   ____________________________________________________________");
+        String msg = sb.toString().trim();
+        setLastMessage(msg);
+        System.out.println(msg);
     }
 
     public void showKeyListMessage(TaskList taskList, String key) {
-        System.out.println("   ____________________________________________________________");
+        StringBuilder sb = new StringBuilder();
         if (taskList.size() < 1) {
-            System.out.println("   No tasks found.");
+            sb.append("No tasks found.");
         } else {
-            System.out.println("   Here are the tasks in your list containing " + "\"" + key + "\":");
+            sb.append("Tasks containing \"").append(key).append("\":\n");
             for (int i = 0; i < taskList.size(); i++) {
-                System.out.println("   " + (i + 1) + ". " + taskList.getTasks().get(i));
+                sb.append(i + 1).append(". ").append(taskList.getTasks().get(i)).append("\n");
             }
         }
-        System.out.println("   ____________________________________________________________");
+        String msg = sb.toString().trim();
+        setLastMessage(msg);
+        System.out.println(msg);
     }
 
     public void errorMessage(String msg) {
-        System.out.println("   ____________________________________________________________");
-        System.out.println("   " + msg);
-        System.out.println("   ____________________________________________________________");
+        setLastMessage(msg);
+        System.out.println(msg);
     }
 
+    public String getLastMessage() {
+        return lastMessage;
+    }
 
-
+    private void setLastMessage(String msg) {
+        lastMessage = msg;
+    }
 }

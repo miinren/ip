@@ -14,6 +14,7 @@ public class Juin {
     private Storage storage;
     private Ui ui;
     private Parser parser;
+    private String commandType;
 
     public Juin(String path) {
         this.storage = new Storage(path);
@@ -29,16 +30,31 @@ public class Juin {
             String userInput = ui.readCommand();
             try {
                 Command cmd = parser.parse(userInput);
+                commandType = cmd.getClass().getSimpleName();
                 isExit = cmd.run(taskList, ui);
                 storage.write(taskList);
             } catch (JuinException e) {
+                commandType = "Error";
                 ui.errorMessage(e.getMessage());
             }
         }
     }
 
-    public static void main(String[] args) {
-        String path = DATA_FOLDER + "/" + DATA_FILE;
-        new Juin(path).run();
+    /**
+     * Generates a response for the user's chat message.
+     */
+    public String getResponse(String input) {
+        try {
+            Command cmd = Parser.parse(input);
+            commandType = cmd.getClass().getSimpleName();
+            cmd.run(taskList, ui);
+            commandType = cmd.getClass().getSimpleName();
+            return ui.getLastMessage();
+        } catch (JuinException e) {
+            return "Error: " + e.getMessage();
+        }
+    }
+    public String getCommandType() {
+        return commandType;
     }
 }

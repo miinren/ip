@@ -7,7 +7,7 @@ public class Parser {
     public static Command parse(String input) throws JuinException {
         input = input.trim();
         if (input.isEmpty()) {
-            throw new JuinException("   Input cannot be empty");
+            throw new JuinException("Input cannot be empty");
         }
 
         String[] parts = input.split(" ", 2);
@@ -24,7 +24,7 @@ public class Parser {
         case "deadline": return new DeadlineCommand(args);
         case "event": return new EventCommand(args);
         case "find": return new FindCommand(args);
-        default: throw new JuinException("   Sorry, I don't understand that command.");
+        default: throw new JuinException("Sorry, I don't understand that command.");
         }
     }
 }

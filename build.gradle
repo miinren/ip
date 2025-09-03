@@ -12,6 +12,12 @@ repositories {
 dependencies {
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.10.0'
     testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.10.0'
+    String javaFxVersion = '17.0.7'
+
+    implementation "org.openjfx:javafx-base:24.0.1:mac"
+    implementation "org.openjfx:javafx-controls:24.0.1:mac"
+    implementation "org.openjfx:javafx-graphics:24.0.1:mac"
+    implementation "org.openjfx:javafx-fxml:24.0.1:mac"
 }
 
 test {
