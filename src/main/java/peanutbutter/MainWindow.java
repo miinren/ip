@@ -31,7 +31,7 @@ public class MainWindow extends AnchorPane {
     }
 
     /** Injects the Duke instance */
-    public void setDuke(Juin d) {
+    public void setJuin(Juin d) {
         juin = d;
     }
 
@@ -45,7 +45,7 @@ public class MainWindow extends AnchorPane {
         String response = juin.getResponse(input);
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDukeDialog(response, dukeImage)
+                DialogBox.getJuinDialog(response, dukeImage)
         );
         userInput.clear();
     }

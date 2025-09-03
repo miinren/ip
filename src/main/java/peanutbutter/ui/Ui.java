@@ -13,10 +13,11 @@ public class Ui {
         lastMessage = "";
     }
 
-    public void welcomeMessage() {
+    public String welcomeMessage() {
         String msg = "Hello! I'm JUIN. What can I do for you?";
         setLastMessage(msg);
         System.out.println(msg);
+        return msg;
     }
 
     public void byeMessage() {
@@ -29,9 +30,13 @@ public class Ui {
         return sc.nextLine();
     }
 
-    public void addTaskMessage(TaskList taskList, Task task) {
-        String msg = "Added: " + task.toString() + "\n"
-                + "Now you have " + taskList.size() + " tasks in the list!";
+    public void addTaskMessage(TaskList taskList, Task... tasks) {
+        StringBuilder sb = new StringBuilder();
+        for (Task task : tasks) {
+            sb.append("Added: ").append(task).append("\n");
+        }
+        sb.append("Now you have ").append(taskList.size()).append(" tasks in the list!");
+        String msg = sb.toString().trim();
         setLastMessage(msg);
         System.out.println(msg);
     }
