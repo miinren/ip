@@ -17,13 +17,20 @@ public class Parser {
         switch (command) {
         case "bye": return new ExitCommand();
         case "list": return new ListCommand();
-        case "mark": return new MarkCommand(args);
-        case "unmark": return new UnmarkCommand(args);
-        case "delete": return new DeleteCommand(args);
-        case "todo": return new TodoCommand(args);
-        case "deadline": return new DeadlineCommand(args);
-        case "event": return new EventCommand(args);
-        case "find": return new FindCommand(args);
+        case "mark": assert !args.isEmpty() : "command must have arguments";
+            return new MarkCommand(args);
+        case "unmark": assert !args.isEmpty() : "command must have arguments";
+            return new UnmarkCommand(args);
+        case "delete": assert !args.isEmpty() : "command must have arguments";
+            return new DeleteCommand(args);
+        case "todo": assert !args.isEmpty() : "command must have arguments";
+            return new TodoCommand(args);
+        case "deadline": assert !args.isEmpty() : "command must have arguments";
+            return new DeadlineCommand(args);
+        case "event": assert !args.isEmpty() : "command must have arguments";
+            return new EventCommand(args);
+        case "find": assert !args.isEmpty() : "command must have arguments";
+            return new FindCommand(args);
         default: throw new JuinException("Sorry, I don't understand that command.");
         }
     }

@@ -19,6 +19,7 @@ public class TaskList {
      * @param read List of task saved by the system
      */
     public TaskList(List<Task> read) {
+        assert read != null : "Initial task list cannot be empty";
         this.taskList = new ArrayList<>(read);
     }
 
@@ -28,6 +29,7 @@ public class TaskList {
      * @return List of tasks
      */
     public List<Task> getTasks() {
+        assert taskList != null : "Task list cannot be null";
         return this.taskList;
     }
 
@@ -37,6 +39,7 @@ public class TaskList {
      * @param task The task that is being added to the task list
      */
     public void addTask(Task task) throws JuinException {
+        assert task != null : "Task cannot be null";
         taskList.add(task);
     }
 
