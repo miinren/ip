@@ -90,6 +90,21 @@ public class Ui {
         System.out.println(msg);
     }
 
+    public void showDueListMessage(TaskList taskList) {
+        StringBuilder sb = new StringBuilder();
+        if (taskList.size() < 1) {
+            sb.append("No tasks due soon.");
+        } else {
+            sb.append("Tasks due in 1 day").append("\n");
+            for (int i = 0; i < taskList.size(); i++) {
+                sb.append(i + 1).append(". ").append(taskList.getTasks().get(i)).append("\n");
+            }
+        }
+        String msg = sb.toString().trim();
+        setLastMessage(msg);
+        System.out.println(msg);
+    }
+
     public void errorMessage(String msg) {
         setLastMessage(msg);
         System.out.println(msg);

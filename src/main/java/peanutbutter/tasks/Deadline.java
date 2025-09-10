@@ -30,6 +30,16 @@ public class Deadline extends Task {
         }
     }
 
+    public LocalDateTime getDueDateTime() {
+        if (byDT != null) {
+            return byDT;
+        } else if (byD != null) {
+            return byD.atStartOfDay();
+        } else {
+            return null;
+        }
+    }
+
     @Override
     public String toString() {
         String byStr = byDT == null ? byD.format(outputD) : byDT.format(outputDT);

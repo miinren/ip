@@ -15,8 +15,10 @@ public class Parser {
         String args = parts.length > 1 ? parts[1].trim() : "";
 
         switch (command) {
+        case "welcome": return new WelcomeCommand();
         case "bye": return new ExitCommand();
         case "list": return new ListCommand();
+        case "reminder": return new ReminderCommand();
         case "mark": assert !args.isEmpty() : "command must have arguments";
             return new MarkCommand(args);
         case "unmark": assert !args.isEmpty() : "command must have arguments";

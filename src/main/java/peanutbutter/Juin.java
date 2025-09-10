@@ -1,6 +1,8 @@
 package peanutbutter;
 
 import peanutbutter.commands.Command;
+import peanutbutter.commands.ReminderCommand;
+import peanutbutter.commands.WelcomeCommand;
 import peanutbutter.exceptions.JuinException;
 import peanutbutter.parser.Parser;
 import peanutbutter.storage.Storage;
@@ -21,8 +23,15 @@ public class Juin {
         this.ui = new Ui();
     }
 
-    public void run() {
-        ui.welcomeMessage();
+    public void run() throws JuinException {
+        Command welcome = Parser.parse("welcome");
+        welcome.run(taskList, ui);
+        try {
+            new ReminderCommand().run(taskList, ui);
+        } catch (JuinException e) {
+            ui.errorMessage(e.getMessage());
+        }
+
         boolean isExit = false;
         while (!isExit) {
             String userInput = ui.readCommand();

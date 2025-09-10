@@ -39,6 +39,16 @@ public class Event extends Task {
         }
     }
 
+    public LocalDateTime getStartTime() {
+        if (fromDT != null) {
+            return fromDT;
+        } else if (fromD != null) {
+            return fromD.atStartOfDay();
+        } else {
+            return null;
+        }
+    }
+
     @Override
     public String toString() {
         String fromStr = fromDT == null ? fromD.format(outputD) : fromDT.format(outputDT);
