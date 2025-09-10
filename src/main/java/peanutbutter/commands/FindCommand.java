@@ -19,13 +19,9 @@ public class FindCommand extends Command {
         if (args == null || args.isBlank()) {
             throw new JuinException("   Search keyword cannot be empty.");
         }
-
-        TaskList keyList = new TaskList(new ArrayList<>());
-        for (Task task : taskList.getTasks()) {
-            if (task.getDescription().contains(args)) {
-                keyList.addTask(task);
-            }
-        }
+        TaskList keyList = new TaskList(taskList.getTasks().stream()
+                .filter(task -> task.getDescription().contains(args))
+                .toList());
         ui.showKeyListMessage(keyList, args);
 
         return false;

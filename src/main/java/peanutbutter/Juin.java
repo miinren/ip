@@ -8,8 +8,6 @@ import peanutbutter.tasks.TaskList;
 import peanutbutter.ui.Ui;
 
 public class Juin {
-    private static final String DATA_FOLDER = "data";
-    private static final String DATA_FILE = "juin.txt";
     private TaskList taskList;
     private Storage storage;
     private Ui ui;
@@ -49,6 +47,7 @@ public class Juin {
             commandType = cmd.getClass().getSimpleName();
             cmd.run(taskList, ui);
             commandType = cmd.getClass().getSimpleName();
+            storage.write(taskList);
             return ui.getLastMessage();
         } catch (JuinException e) {
             return "Error: " + e.getMessage();
