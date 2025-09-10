@@ -22,6 +22,7 @@ public class Juin {
     }
 
     public void run() {
+
         ui.welcomeMessage();
         boolean isExit = false;
         while (!isExit) {
