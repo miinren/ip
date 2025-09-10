@@ -47,6 +47,7 @@ public class Juin {
             commandType = cmd.getClass().getSimpleName();
             cmd.run(taskList, ui);
             commandType = cmd.getClass().getSimpleName();
+            storage.write(taskList);
             return ui.getLastMessage();
         } catch (JuinException e) {
             return "Error: " + e.getMessage();
