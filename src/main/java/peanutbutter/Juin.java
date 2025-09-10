@@ -8,8 +8,6 @@ import peanutbutter.tasks.TaskList;
 import peanutbutter.ui.Ui;
 
 public class Juin {
-    private static final String DATA_FOLDER = "data";
-    private static final String DATA_FILE = "juin.txt";
     private TaskList taskList;
     private Storage storage;
     private Ui ui;
