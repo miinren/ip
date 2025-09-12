@@ -1,4 +1,4 @@
-package peanutbutter;
+package peanutbutter.gui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -7,6 +7,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import peanutbutter.Juin;
+
 /**
  * Controller for the main GUI.
  */
@@ -23,7 +25,7 @@ public class MainWindow extends AnchorPane {
     private Juin juin;
 
     private Image userImage = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
-    private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
+    private Image juinImage = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
 
     @FXML
     public void initialize() {
@@ -45,7 +47,7 @@ public class MainWindow extends AnchorPane {
         String response = juin.getResponse(input);
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getJuinDialog(response, dukeImage)
+                DialogBox.getJuinDialog(response, juinImage)
         );
         userInput.clear();
     }
