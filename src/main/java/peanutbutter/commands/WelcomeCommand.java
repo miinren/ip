@@ -5,7 +5,7 @@ import peanutbutter.tasks.TaskList;
 import peanutbutter.ui.Ui;
 
 /**
- * A command that displays the welcome message to the user.
+ * Represents a command to display the welcome messagee.
  */
 public class WelcomeCommand extends Command {
     /**

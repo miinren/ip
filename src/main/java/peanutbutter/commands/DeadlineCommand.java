@@ -6,13 +6,28 @@ import peanutbutter.tasks.Task;
 import peanutbutter.tasks.TaskList;
 import peanutbutter.ui.Ui;
 
+/**
+ * Represents a command to create and add a Deadline task.
+ */
 public class DeadlineCommand extends Command {
     private final String args;
 
+    /**
+     * Creates a new DeadlineCommand with the given arguments.
+     *
+     * @param args the arguments containing description and due date
+     */
     public DeadlineCommand(String args) {
         this.args = args;
     }
 
+    /**
+     * Executes the DeadlineCommand.
+     *
+     * @param taskList the list of tasks
+     * @param ui the user interface for displaying messages
+     * @throws JuinException if the arguments are invalid or the deadline cannot be created
+     */
     @Override
     public boolean run(TaskList taskList, Ui ui) throws JuinException {
         if (args.isEmpty()) {

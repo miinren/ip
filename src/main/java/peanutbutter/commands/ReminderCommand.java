@@ -11,7 +11,18 @@ import peanutbutter.ui.Ui;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * Represents a command to show tasks that are due soon.
+ */
 public class ReminderCommand extends Command {
+
+    /**
+     * Executes the ReminderCommand.
+     *
+     * @param taskList the list of tasks
+     * @param ui the user interface for displaying messages
+     * @throws JuinException if no valid reminders can be generated
+     */
     @Override
     public boolean run(TaskList taskList, Ui ui) throws JuinException {
         LocalDateTime now = LocalDateTime.now();
