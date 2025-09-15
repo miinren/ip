@@ -1,12 +1,12 @@
 package peanutbutter.tasks;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
 import peanutbutter.exceptions.JuinException;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TaskListTest {
     @Test
