@@ -9,7 +9,6 @@ import peanutbutter.exceptions.JuinException;
  * List of tasks created by the user
  * Provides methods to add, delete, get, mark, and unmark tasks.
  */
-
 public class TaskList {
     private ArrayList <Task> taskList;
 
