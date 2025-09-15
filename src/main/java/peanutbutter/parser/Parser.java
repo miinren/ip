@@ -1,9 +1,38 @@
 package peanutbutter.parser;
 
-import peanutbutter.commands.*;
+import peanutbutter.commands.Command;
+import peanutbutter.commands.DeadlineCommand;
+import peanutbutter.commands.DeleteCommand;
+import peanutbutter.commands.EventCommand;
+import peanutbutter.commands.ExitCommand;
+import peanutbutter.commands.FindCommand;
+import peanutbutter.commands.ListCommand;
+import peanutbutter.commands.MarkCommand;
+import peanutbutter.commands.ReminderCommand;
+import peanutbutter.commands.TodoCommand;
+import peanutbutter.commands.UnmarkCommand;
+import peanutbutter.commands.WelcomeCommand;
 import peanutbutter.exceptions.JuinException;
 
+/**
+ * Parser class responsible for interpreting user input
+ * and converting it into Command objects.
+ * <p>
+ * The parser trims whitespace, splits the input into a command and arguments,
+ * and maps the command keyword to a specific Command implementation.
+ * It throws a {@link JuinException} if the input is empty or
+ * the command is unrecognized.
+ */
 public class Parser {
+
+    /**
+     * Parses the given user input string and returns
+     * the corresponding {@link Command} object.
+     *
+     * @param input the raw user input string
+     * @return a Command object corresponding to the parsed input
+     * @throws JuinException if the input is empty or the command is unknown
+     */
     public static Command parse(String input) throws JuinException {
         input = input.trim();
         if (input.isEmpty()) {

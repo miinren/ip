@@ -10,7 +10,9 @@ import javafx.scene.layout.VBox;
 import peanutbutter.Juin;
 
 /**
- * Controller for the main GUI.
+ * Represents the main window of the Juin GUI.
+ * This class manages the layout, user interactions, and integration
+ * with the underlying logic of the application.
  */
 public class MainWindow extends AnchorPane {
     @FXML

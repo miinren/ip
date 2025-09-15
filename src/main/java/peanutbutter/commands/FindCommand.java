@@ -1,9 +1,6 @@
 package peanutbutter.commands;
 
-import java.util.ArrayList;
-
 import peanutbutter.exceptions.JuinException;
-import peanutbutter.tasks.Task;
 import peanutbutter.tasks.TaskList;
 import peanutbutter.ui.Ui;
 

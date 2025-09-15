@@ -8,13 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import peanutbutter.tasks.*;
+import peanutbutter.tasks.Deadline;
+import peanutbutter.tasks.Event;
+import peanutbutter.tasks.Task;
+import peanutbutter.tasks.TaskList;
+import peanutbutter.tasks.Todo;
 
 /**
  * Storage class that handles reading and writing
  * Allows the task list to be saved and maintained
  */
-
 public class Storage {
     private String path;
 
@@ -79,7 +82,6 @@ public class Storage {
      * Helper method to translates the contents of the task list that is saved in storage
      *
      * @param line The line that is being translated back from a string to a task
-     *
      * @return The task that was just translated
      */
     public Task parseFile(String line) {

@@ -1,15 +1,14 @@
 package peanutbutter.commands;
 
-import peanutbutter.Juin;
+import java.time.LocalDateTime;
+import java.util.List;
+
 import peanutbutter.exceptions.JuinException;
 import peanutbutter.tasks.Deadline;
 import peanutbutter.tasks.Event;
 import peanutbutter.tasks.Task;
 import peanutbutter.tasks.TaskList;
 import peanutbutter.ui.Ui;
-
-import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * Represents a command to show tasks that are due soon.
