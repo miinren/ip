@@ -43,6 +43,8 @@ public class DeadlineCommand extends Command {
             Task deadline = new Deadline(parts[0].trim(), parts[1].trim());
             taskList.addTask(deadline);
             ui.addTaskMessage(taskList, deadline);
+        } catch (java.time.format.DateTimeParseException e) {
+            throw new JuinException("Invalid date/time format! Use yyyy-MM-dd or yyyy-MM-dd HHmm");
         } catch (IllegalArgumentException e) {
             throw new JuinException("Invalid date/time format. Use yyyy-MM-dd or yyyy-MM-dd HHmm");
         }

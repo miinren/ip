@@ -44,6 +44,8 @@ public class EventCommand extends Command {
             Task event = new Event(parts[0].trim(), parts[1].trim(), parts[2].trim());
             taskList.addTask(event);
             ui.addTaskMessage(taskList, event);
+        } catch (java.time.format.DateTimeParseException e) {
+            throw new JuinException("Invalid date/time format! Use yyyy-MM-dd or yyyy-MM-dd HHmm");
         } catch (IllegalArgumentException e) {
             throw new JuinException("Invalid date/time format. Use yyyy-MM-dd or yyyy-MM-dd HHmm");
         }
