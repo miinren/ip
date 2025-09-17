@@ -36,18 +36,9 @@ public class Storage {
      * @param taskList The task list that is being saved in the storage
      */
     public void write(TaskList taskList) {
-        File folder = new File("data");
-        if (!folder.exists()) {
-            folder.mkdir();
-        }
-
-        try (FileWriter fw = new FileWriter(this.path)) {
-            for (Task task : taskList.getTasks()) {
-                fw.write(task.makePretty() + "\n");
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        checkFolder();
+        String serialized = serialiseTasks(taskList);
+        writeToFile(serialized);
     }
 
     /**
@@ -60,21 +51,44 @@ public class Storage {
         if (!file.exists()) {
             return new ArrayList<>();
         }
+        return parseTasksFromFile(file);
+    }
 
+    private void checkFolder() {
+        File folder = new File("Data");
+        if (!folder.exists()) {
+            folder.mkdir();
+        }
+    }
+
+    private String serialiseTasks(TaskList taskList) {
+        StringBuilder sb = new StringBuilder();
+        for (Task task : taskList.getTasks()) {
+            sb.append(task.makePretty()).append("\n");
+        }
+        return sb.toString();
+    }
+
+    private void writeToFile(String content) {
+        try (FileWriter fw = new FileWriter(this.path)) {
+            fw.write(content);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private List<Task> parseTasksFromFile(File file) {
         List<Task> tasks = new ArrayList<>();
-        try {
-            Scanner sc = new Scanner(file);
+        try (Scanner sc = new Scanner(file)) {
             while (sc.hasNextLine()) {
                 String line = sc.nextLine().trim();
                 if (!line.isEmpty()) {
-                    Task task = parseFile(line);
-                    tasks.add(task);
+                    tasks.add(parseFile(line));
                 }
             }
         } catch (FileNotFoundException e) {
             return new ArrayList<>();
         }
-
         return tasks;
     }
 
@@ -84,10 +98,10 @@ public class Storage {
      * @param line The line that is being translated back from a string to a task
      * @return The task that was just translated
      */
-    public Task parseFile(String line) {
+    private Task parseFile(String line) {
         String[] parts = line.split("\\s*\\|\\s*");
         String taskType = parts[0];
-        Boolean isDone = "1".equals(parts[1]);
+        boolean isDone = "1".equals(parts[1]);
         String description = parts[2];
         Task task = null;
 

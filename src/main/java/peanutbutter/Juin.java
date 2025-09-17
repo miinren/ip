@@ -43,14 +43,6 @@ public class Juin {
      * @throws JuinException if a command cannot be executed
      */
     public void run() throws JuinException {
-        Command welcome = Parser.parse("welcome");
-        welcome.run(taskList, ui);
-        try {
-            new ReminderCommand().run(taskList, ui);
-        } catch (JuinException e) {
-            ui.errorMessage(e.getMessage());
-        }
-
         boolean isExit = false;
         while (!isExit) {
             String userInput = ui.readCommand();
