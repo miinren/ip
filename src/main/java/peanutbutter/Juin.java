@@ -96,4 +96,13 @@ public class Juin {
     public String getCommandType() {
         return commandType;
     }
+
+    /**
+     * Returns the task list of juin.
+     *
+     * @return the current stored tasklist.
+     */
+    public TaskList getTaskList() {
+        return this.taskList;
+    }
 }

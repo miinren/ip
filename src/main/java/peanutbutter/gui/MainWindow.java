@@ -8,6 +8,10 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import peanutbutter.Juin;
+import peanutbutter.commands.ReminderCommand;
+import peanutbutter.exceptions.JuinException;
+import peanutbutter.tasks.TaskList;
+import peanutbutter.ui.Ui;
 
 /**
  * Represents the main window of the Juin GUI.
@@ -37,6 +41,17 @@ public class MainWindow extends AnchorPane {
     /** Injects the Duke instance */
     public void setJuin(Juin d) {
         juin = d;
+        Ui ui = new Ui();
+        String welcome = "Hello! I'm JUIN. What can I do for you?";
+        dialogContainer.getChildren().add(DialogBox.getJuinDialog(welcome, juinImage));
+        try {
+            ReminderCommand reminder = new ReminderCommand();
+            reminder.run(juin.getTaskList(), ui);
+            String dueMsg = ui.getLastMessage();
+            dialogContainer.getChildren().add(DialogBox.getJuinDialog(dueMsg, juinImage));
+        } catch (JuinException e) {
+            ui.errorMessage(e.getMessage());
+        }
     }
 
     /**

@@ -151,8 +151,9 @@ public class Ui {
      * Displays all tasks in the task list that are due soon.
      *
      * @param taskList the TaskList containing due tasks
+     * @return the tasks that are due soon.
      */
-    public void showDueListMessage(TaskList taskList) {
+    public String showDueListMessage(TaskList taskList) {
         StringBuilder sb = new StringBuilder();
         if (taskList.size() < 1) {
             sb.append("No tasks due soon.");
@@ -165,6 +166,8 @@ public class Ui {
         String msg = sb.toString().trim();
         setLastMessage(msg);
         System.out.println(msg);
+
+        return msg;
     }
 
     /**
