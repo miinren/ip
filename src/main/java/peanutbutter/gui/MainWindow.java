@@ -42,7 +42,7 @@ public class MainWindow extends AnchorPane {
     public void setJuin(Juin d) {
         juin = d;
         Ui ui = new Ui();
-        String welcome = "Hello! I'm JUIN. What can I do for you?";
+        String welcome = ui.welcomeMessage();
         dialogContainer.getChildren().add(DialogBox.getJuinDialog(welcome, juinImage));
         try {
             ReminderCommand reminder = new ReminderCommand();
