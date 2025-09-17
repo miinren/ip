@@ -25,29 +25,26 @@ public class DeadlineCommand extends Command {
      * Executes the DeadlineCommand.
      *
      * @param taskList the list of tasks
-     * @param ui the user interface for displaying messages
+     * @param ui       the user interface for displaying messages
      * @throws JuinException if the arguments are invalid or the deadline cannot be created
      */
     @Override
     public boolean run(TaskList taskList, Ui ui) throws JuinException {
-        if (args.isEmpty()) {
-            throw new JuinException("   The description or time of deadline cannot be empty!");
-        }
-
-        if (!args.contains(" /by ")) {
-            throw new JuinException("   Deadline must have a /by date!");
+        if (args.isBlank()) {
+            throw new JuinException("The description of a deadline cannot be empty!");
         }
 
         String[] parts = args.split(" /by", 2);
-        if (parts[0].isBlank() || parts[1].isBlank() || parts.length < 2) {
-            throw new JuinException("   Deadline requires a description and /by date!");
+        if (parts[0].isBlank() || parts.length < 2 || parts[1].isBlank()) {
+            throw new JuinException("Deadline requires both a description and a /by date!");
         }
+
         try {
             Task deadline = new Deadline(parts[0].trim(), parts[1].trim());
             taskList.addTask(deadline);
             ui.addTaskMessage(taskList, deadline);
         } catch (IllegalArgumentException e) {
-            throw new JuinException("   Invalid date/time format. Use yyyy-MM-dd or yyyy-MM-dd HHmm");
+            throw new JuinException("Invalid date/time format. Use yyyy-MM-dd or yyyy-MM-dd HHmm");
         }
         return false;
     }

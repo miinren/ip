@@ -31,7 +31,7 @@ public class TodoCommand extends Command {
     @Override
     public boolean run(TaskList taskList, Ui ui) throws JuinException {
         if (args.isEmpty()) {
-            throw new JuinException("   The description of todo cannot be empty!");
+            throw new JuinException("The description of todo cannot be empty!");
         }
 
         Task todo = new Todo(args);

@@ -29,7 +29,7 @@ public class MarkCommand extends Command {
     @Override
     public boolean run(TaskList taskList, Ui ui) throws JuinException {
         if (args.isEmpty()) {
-            throw new JuinException("   State an index to mark.");
+            throw new JuinException("State an index to mark.");
         }
 
         try {
@@ -37,7 +37,7 @@ public class MarkCommand extends Command {
             taskList.markTaskDone(index);
             ui.markTaskMessage(taskList.get(index));
         } catch (NumberFormatException e) {
-            throw new JuinException("   Invalid task number!");
+            throw new JuinException("Invalid task number!");
         }
 
         return false;

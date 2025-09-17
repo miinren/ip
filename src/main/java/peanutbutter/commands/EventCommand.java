@@ -30,24 +30,22 @@ public class EventCommand extends Command {
      */
     @Override
     public boolean run(TaskList taskList, Ui ui) throws JuinException {
-        if (args.isEmpty()) {
-            throw new JuinException("   The description or time of event cannot be empty!");
+        if (args.isBlank()) {
+            throw new JuinException("The description of an event cannot be empty!");
         }
 
-        if (!args.contains(" /from") || !args.contains(" /to")) {
-            throw new JuinException("   Event requires /from and /to times!");
+        String[] parts = args.split(" /from | /to ", 3);
+
+        if (parts.length < 3 || parts[0].isBlank() || parts[1].isBlank() || parts[2].isBlank()) {
+            throw new JuinException("Event requires a description, a /from time, and a /to time!");
         }
 
-        String[] parts = args.split(" /from | /to");
-        if (parts.length < 3) {
-            throw new JuinException("   Invalid event format!");
-        }
         try {
             Task event = new Event(parts[0].trim(), parts[1].trim(), parts[2].trim());
             taskList.addTask(event);
             ui.addTaskMessage(taskList, event);
         } catch (IllegalArgumentException e) {
-            throw new JuinException("   Invalid date/time format. Use yyyy-MM-dd or yyyy-MM-dd HHmm");
+            throw new JuinException("Invalid date/time format. Use yyyy-MM-dd or yyyy-MM-dd HHmm");
         }
 
         return false;

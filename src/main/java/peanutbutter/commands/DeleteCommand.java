@@ -30,7 +30,7 @@ public class DeleteCommand extends Command {
     @Override
     public boolean run(TaskList taskList, Ui ui) throws JuinException {
         if (args.isEmpty()) {
-            throw new JuinException("   State an index to delete.");
+            throw new JuinException("State an index to delete.");
         }
 
         try {
@@ -38,7 +38,7 @@ public class DeleteCommand extends Command {
             Task removedTask = taskList.deleteTask(index);
             ui.deleteTaskMessage(taskList, removedTask);
         } catch (NumberFormatException e) {
-            throw new JuinException("   Invalid task number!");
+            throw new JuinException("Invalid task number!");
         }
         return false;
     }

@@ -102,7 +102,7 @@ public class TaskList {
      */
     private void checkIndex(int index) throws JuinException {
         if (index < 0 || index >= taskList.size()) {
-            throw new JuinException("   INVALID TASK");
+            throw new JuinException("INVALID TASK");
         }
     }
 
