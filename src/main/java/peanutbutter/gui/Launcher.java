@@ -1,9 +1,6 @@
 package peanutbutter.gui;
 
 import javafx.application.Application;
-import peanutbutter.Juin;
-import peanutbutter.exceptions.JuinException;
-
 
 /**
  * Launches the Juin application by initializing the JavaFX runtime.
