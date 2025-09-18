@@ -1,5 +1,8 @@
 package peanutbutter;
 
+import javafx.animation.PauseTransition;
+import javafx.application.Platform;
+import javafx.util.Duration;
 import peanutbutter.commands.Command;
 import peanutbutter.commands.ReminderCommand;
 import peanutbutter.exceptions.JuinException;
@@ -96,5 +99,9 @@ public class Juin {
      */
     public TaskList getTaskList() {
         return this.taskList;
+    }
+
+    public static void main(String[] args) throws JuinException {
+        new Juin("data/juin.txt").run();
     }
 }

@@ -44,7 +44,7 @@ test {
 }
 
 application {
-    mainClass.set("PeanutButter.Juin")
+    mainClass.set("peanutbutter.gui.Launcher")
 }
 
 shadowJar {

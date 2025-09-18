@@ -1,5 +1,8 @@
 package peanutbutter.commands;
 
+import javafx.animation.PauseTransition;
+import javafx.application.Platform;
+import javafx.util.Duration;
 import peanutbutter.exceptions.JuinException;
 import peanutbutter.tasks.TaskList;
 import peanutbutter.ui.Ui;
@@ -18,6 +21,14 @@ public class ExitCommand extends Command {
     @Override
     public boolean run(TaskList taskList, Ui ui) throws JuinException {
         ui.byeMessage();
+        PauseTransition delay = new PauseTransition(Duration.millis(400));
+        delay.setOnFinished(e -> Platform.exit());
+        delay.play();
         return true;
+    }
+
+    @Override
+    public boolean isExit() {
+        return true; // used in Juin for UI exit handling
     }
 }

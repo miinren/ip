@@ -124,3 +124,46 @@ Example: `delete 3`
 Removed: [D] [ ] pet jajjang (by: Sep 12 2025)
 Now you have 4 tasks in the list!
 ```
+
+# Exit
+Ends the program by typing:
+
+```
+bye
+```
+
+Example: `bye`
+
+
+```
+Bye. Hope to see you again soon!
+```
+
+# Find
+Finds tasks in task list by typing:
+
+```
+find TEXT
+```
+
+Example: `find pet`
+
+```
+Tasks containing "pet":
+1. [D] [ ] pet jjajang (by: Sep 17 2025 23:59)
+2. [E] [ ] pet jjajang (from: Sep 12 2025 00:00 to: Sep 12 2030 23:59)
+```
+
+# Reminder
+Reminders for tasks due in 1 day by typing:
+
+```
+reminder
+```
+
+Example: `reminder`
+
+```
+Tasks due in 1 day
+1. [D] [ ] pet jjajang (by: Sep 19 2025 10:00)
+```

@@ -1,7 +1,9 @@
 package peanutbutter.gui;
 
+import javafx.application.Application;
 import peanutbutter.Juin;
 import peanutbutter.exceptions.JuinException;
+
 
 /**
  * Launches the Juin application by initializing the JavaFX runtime.
@@ -14,11 +16,6 @@ public class Launcher {
      * @param args The command-line arguments.
      */
     public static void main(String[] args) {
-        try {
-            Juin app = new Juin("data/juin.txt");
-            app.run();
-        } catch (JuinException e) {
-            System.out.println("Error starting juin: " + e.getMessage());
-        }
+        Application.launch(Main.class, args);
     }
 }

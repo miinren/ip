@@ -18,4 +18,13 @@ public abstract class Command {
      * @throws JuinException If an error occurs during command execution.
      */
     public abstract boolean run(TaskList taskList, Ui ui) throws JuinException;
+
+    /**
+     * Determines if the program exits after a command
+     *
+     * @return True if the command should terminate, false otherwise.
+     */
+    public boolean isExit() {
+        return false;
+    }
 }

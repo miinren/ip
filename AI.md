@@ -7,4 +7,5 @@ AI tools (Copilot, ChatGPT)
   - But, in saving time coding, I now have to tweak and understand the code
   - This reduces the time save and reduces the effectiveness
   - I think AI could be more useful if used to write a few lines instead of a whole method
-  
+- Assisted in helping me write the program to terminate the app when saying 'bye'
+  - Useful as I was unfamiliar with the libraries needed
